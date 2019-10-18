@@ -32,7 +32,7 @@ public class Triangle {
         if (sides.length != 3) {
             throw new IllegalArgumentException("Triangle has to have 3 sides");
         }
-        for (int i = 0; i < sides.length; i++) {
+        for (int i = 1; i <= sides.length; i++) {
             validateSideNotLessZero(sides[i], i);
         }
         validateSidesLessSumOtherTwo(sides);
@@ -42,7 +42,7 @@ public class Triangle {
             throws IllegalArgumentException {
         if (side < 0) {
             throw new IllegalArgumentException(
-                    "Side " + (i + 1) + " has to be not less than 0.");
+                    "Side " + i + " has to be not less than 0.");
         }
     }
 
@@ -52,10 +52,10 @@ public class Triangle {
         for (double side : sides) {
             sum += side;
         }
-        for (int i = 0; i < sides.length; i++) {
+        for (int i = 1; i <= sides.length; i++) {
             double sumOtherTwo = sum - sides[i];
             if (sides[i] >= sumOtherTwo) {
-                throw new IllegalArgumentException("Side " + (i + 1)
+                throw new IllegalArgumentException("Side " + i
                         + " can not be greater than sum of other two sides.");
             }
         }

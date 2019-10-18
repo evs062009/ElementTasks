@@ -7,10 +7,10 @@ import java.util.List;
 public class ConsoleTrianglesOutput implements ITrianglesOutput {
 
     @Override
-    public void printTrianglesArr(List<Triangle> trianglesArr) {
+    public void printTriangles(List<Triangle> triangles) {
         System.out.println("============= Triangles list: ===============");
-        for (int i = 0; i < trianglesArr.size(); i++) {
-            System.out.println((i + 1) + ". " + trianglesArr.get(i).toString());
+        for (int i = 1; i <= triangles.size(); i++) {
+            System.out.println(i + ". " + triangles.get(i).toString());
         }
     }
 }

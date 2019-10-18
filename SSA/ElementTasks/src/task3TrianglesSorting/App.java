@@ -21,8 +21,8 @@ public class App {
     }
 
     void execute() {
-        List<Triangle> trianglesArr = input.getTrianglesArr();
-        sorting.sortTriangleArr(trianglesArr);
-        output.printTrianglesArr(trianglesArr);
+        List<Triangle> triangles = input.inputTriangles();
+        sorting.sortTriangles(triangles);
+        output.printTriangles(triangles);
     }
 }

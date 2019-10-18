@@ -3,7 +3,12 @@ package task1ChessBoard;
 public class ChessBoard implements IChessBoard {
 
     @Override
-    public void printChessBoard(int height, int width) {
+    public void printChessBoard(int height, int width)
+            throws IllegalArgumentException {
+        if (height <= 0 || width <= 0) {
+            throw new IllegalArgumentException(
+                    "Height and width have to be greater than 0.");
+        }
         for (int i = 0; i < height; i++) {
             printString(width, i);
         }

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ITrianglesSorting {
 
-    void sortTriangleArr(List<Triangle> trianglesArr);
+    void sortTriangles(List<Triangle> triangles);
 }

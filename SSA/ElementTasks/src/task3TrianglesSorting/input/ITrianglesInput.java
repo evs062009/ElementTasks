@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ITrianglesInput {
 
-    List<Triangle> getTrianglesArr();
+    List<Triangle> inputTriangles();
 }

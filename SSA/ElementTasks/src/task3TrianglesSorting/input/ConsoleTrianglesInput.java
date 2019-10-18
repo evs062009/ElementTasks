@@ -13,17 +13,17 @@ public class ConsoleTrianglesInput implements ITrianglesInput {
     private static final String YES = "yes";
 
     @Override
-    public List<Triangle> getTrianglesArr() {
-        List<Triangle> triangleList = new LinkedList<>();
+    public List<Triangle> inputTriangles() {
+        List<Triangle> triangles = new LinkedList<>();
         do {
             try {
-                triangleList.add(getNewTriangle());
+                triangles.add(getNewTriangle());
             } catch (Exception ex) {
                 System.out.println("Invalid triangle. Reason: "
                         + ex.getMessage());
             }
         } while (isContinue());
-        return triangleList;
+        return triangles;
     }
 
     private Triangle getNewTriangle() throws IllegalArgumentException {
@@ -33,14 +33,14 @@ public class ConsoleTrianglesInput implements ITrianglesInput {
         String name = sc.nextLine().trim();
 
         double[] sides = new double[3];
-        for (int i = 0; i < sides.length; i++) {
+        for (int i = 1; i <= sides.length; i++) {
             sides[i] = inputSideLength(i);
         }
         return new Triangle(name, sides);
     }
 
     private double inputSideLength(int i) throws NumberFormatException {
-        System.out.print("Input length of side " + (i + 1) + ": ");
+        System.out.print("Input length of side " + i + ": ");
         return InputUtilities.input();
     }
 

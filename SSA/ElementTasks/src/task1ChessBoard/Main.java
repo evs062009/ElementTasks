@@ -11,7 +11,7 @@ public class Main {
         IChessBoard chessBoard = new ChessBoard();
         try {
             chessBoard.printChessBoard(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-        } catch (NumberFormatException ex) {
+        } catch (IllegalArgumentException ex) {
             ex.printStackTrace();
         }
     }
