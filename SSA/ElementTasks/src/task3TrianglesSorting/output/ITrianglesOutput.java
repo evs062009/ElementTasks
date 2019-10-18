@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ITrianglesOutput {
 
-    void showTrianglesArr(List<Triangle> trianglesArr);
+    void printTrianglesArr(List<Triangle> trianglesArr);
 }

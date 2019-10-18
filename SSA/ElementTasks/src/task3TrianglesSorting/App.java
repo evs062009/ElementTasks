@@ -23,6 +23,6 @@ public class App {
     void execute() {
         List<Triangle> trianglesArr = input.getTrianglesArr();
         sorting.sortTriangleArr(trianglesArr);
-        output.showTrianglesArr(trianglesArr);
+        output.printTrianglesArr(trianglesArr);
     }
 }
