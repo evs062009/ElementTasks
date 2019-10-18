@@ -41,8 +41,8 @@ public class App {
     private boolean isContinue() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("For adding another triangle input '" + Y + "' or '"
-                + YES + "'. For finish input another symbol: ");
+        output.printMessage(String.format("For adding another triangle input '%s' or '%s'. "
+                        .concat("For finish input another symbol: "), Y, YES));
         String input = sc.next().trim();
         return Y.equalsIgnoreCase(input) || YES.equalsIgnoreCase(input);
     }

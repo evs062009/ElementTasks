@@ -42,7 +42,7 @@ public class Triangle {
             throws IllegalArgumentException {
         if (side < 0) {
             throw new IllegalArgumentException(
-                    "Side " + i + " has to be not less than 0.");
+                    String.format("Side %s has to be not less than 0.", i));
         }
     }
 
@@ -55,8 +55,8 @@ public class Triangle {
         for (int i = 1; i <= sides.length; i++) {
             double sumOtherTwo = sum - sides[i];
             if (sides[i] >= sumOtherTwo) {
-                throw new IllegalArgumentException("Side " + i
-                        + " can not be greater than sum of other two sides.");
+                throw new IllegalArgumentException(String.format(
+                        "Side %s can not be greater than sum of other two sides.", i));
             }
         }
     }
@@ -72,6 +72,7 @@ public class Triangle {
 
     @Override
     public String toString() {
-        return "[" + name + "]: " + MathUtilities.round(area, 2) + " cm";
+        return String.format("[%s]: %s cm", name,
+                MathUtilities.round(area, 2));
     }
 }

@@ -14,24 +14,24 @@ public class ChessBoard implements IChessBoard {
         }
     }
 
-    protected char getFirst() {
-        return '*';
+    protected String getFirst() {
+        return "*";
     }
 
-    protected char getSecond() {
-        return ' ';
+    protected String getSecond() {
+        return " ";
     }
 
     private void printString(int width, int i) {
-        String section = "";
+        String section;
         String end;
 
         if (i % 2 == 0) {
-            section = section + getFirst() + getSecond();
-            end = "" + getFirst();
+            section = getFirst().concat(getSecond());
+            end = getFirst();
         } else {
-            section = section + getSecond() + getFirst();
-            end = "" + getSecond();
+            section = getSecond().concat(getFirst());
+            end = getSecond();
         }
 
         int halfWidth = width / 2;

@@ -19,8 +19,8 @@ public class ConsoleTrianglesInput implements ITrianglesInput {
             try {
                 triangles.add(getNewTriangle());
             } catch (Exception ex) {
-                System.out.println("Invalid triangle. Reason: "
-                        + ex.getMessage());
+                System.out.printf("Invalid triangle. Reason: %s%n",
+                        ex.getMessage());
             }
         } while (isContinue());
         return triangles;
@@ -40,15 +40,15 @@ public class ConsoleTrianglesInput implements ITrianglesInput {
     }
 
     private double inputSideLength(int i) throws NumberFormatException {
-        System.out.print("Input length of side " + i + ": ");
+        System.out.printf("Input length of side %s:", i);
         return InputUtilities.input();
     }
 
     private boolean isContinue() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("For adding another triangle input '" + Y + "' or '"
-                + YES + "'. For finish input another symbol: ");
+        System.out.printf("For adding another triangle input '%s' or '%s'. "
+                .concat("For finish input another symbol: "), Y, YES);
         String input = sc.next().trim();
         return Y.equalsIgnoreCase(input) || YES.equalsIgnoreCase(input);
     }

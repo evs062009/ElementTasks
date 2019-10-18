@@ -15,16 +15,17 @@ public class ConsoleEnvelopesInput implements IEnvelopesInput {
 
         for (int i = 1; i <= envelopeNumber; i++) {
             try {
-                System.out.print(
-                        "Input length of side A for Envelope " + i + ": ");
+                System.out.printf(
+                        "Input length of side A for Envelope %s:", i);
                 double sideA = InputUtilities.input();
-                System.out.print(
-                        "Input length of side B for Envelope " + i + ": ");
+                System.out.printf(
+                        "Input length of side B for Envelope %s:", i);
                 double sideB = InputUtilities.input();
                 envelopes.add(new Envelope(sideA, sideB));
             } catch (IllegalArgumentException ex) {
-                System.out.println("Wrong envelope sides. Reason: "
-                        + ex.getMessage() + ". Repeat input.");
+                System.out.printf(
+                        "Wrong envelope sides. Reason: %s. Repeat input.%n",
+                        ex.getMessage());
                 i--;
             }
         }

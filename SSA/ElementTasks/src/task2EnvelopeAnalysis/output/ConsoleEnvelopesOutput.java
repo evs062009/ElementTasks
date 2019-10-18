@@ -4,8 +4,13 @@ public class ConsoleEnvelopesOutput implements IEnvelopesOutput {
 
     @Override
     public void printAnalysesResult(boolean res) {
+        String addStr = (res) ? ("") : ("not ");
+        System.out.printf(
+                "Envelopes can %sbe nested one into another.%n", addStr);
+    }
 
-        System.out.println("Envelopes can " + ((res) ? ("") : ("not "))
-                + "be nested one into another.\n");
+    public void printMessage(String message) {
+        System.out.println(message);
+        System.out.println();
     }
 }
