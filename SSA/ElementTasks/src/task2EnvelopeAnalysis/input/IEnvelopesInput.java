@@ -1,11 +1,9 @@
 package task2EnvelopeAnalysis.input;
 
 
-import task2EnvelopeAnalysis.domains.Envelope;
-
-import java.util.List;
+import task2EnvelopeAnalysis.dto.EnvelopeDto;
 
 public interface IEnvelopesInput {
 
-    List<Envelope> inputEnvelops();
+    EnvelopeDto inputEnvelopsData(int envelopeNumber);
 }

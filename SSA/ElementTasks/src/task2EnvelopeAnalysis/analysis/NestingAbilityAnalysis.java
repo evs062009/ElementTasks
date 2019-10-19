@@ -7,15 +7,7 @@ import java.util.List;
 public class NestingAbilityAnalysis implements IEnvelopesAnalysis {
 
     @Override
-    public boolean analyseEnvelopes(List<Envelope> envelopes)
-            throws IllegalArgumentException {
-        if (envelopes == null || envelopes.isEmpty()) {
-            throw new IllegalArgumentException("There is no envelopes for analysis.");
-        }
-        return analyseNestingAbility(envelopes);
-    }
-
-    private boolean analyseNestingAbility(List<Envelope> envelopes) {
+    public boolean analyseEnvelopes(List<Envelope> envelopes) {
         Envelope maxEnvelope = envelopes.get(0);
         for (int i = 1; i < envelopes.size(); i++) {
             maxEnvelope = getMaxEnvelopeOpt(maxEnvelope, envelopes.get(i));

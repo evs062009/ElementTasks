@@ -1,34 +1,21 @@
 package task2EnvelopeAnalysis.input;
 
-import task2EnvelopeAnalysis.domains.Envelope;
+import task2EnvelopeAnalysis.dto.EnvelopeDto;
 import utilities.IOUtilities;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConsoleEnvelopesInput implements IEnvelopesInput {
 
     @Override
-    public List<Envelope> inputEnvelops() {
-        int envelopeNumber = 2;
-        List<Envelope> envelopes = new ArrayList<>(envelopeNumber);
+    public EnvelopeDto inputEnvelopsData(int envelopeNumber)
+            throws NumberFormatException {
 
-        for (int i = 1; i <= envelopeNumber; i++) {
-            try {
-                IOUtilities.print(String.format(
-                        "Input length of side A for Envelope %s:", i));
-                double sideA = IOUtilities.inputDouble();
-                IOUtilities.print(String.format(
-                        "Input length of side B for Envelope %s:", i));
-                double sideB = IOUtilities.inputDouble();
-                envelopes.add(new Envelope(sideA, sideB));
-            } catch (IllegalArgumentException ex) {
-                IOUtilities.print(String.format(
-                        "Wrong envelope sides. Reason: %s. Repeat input.%n",
-                        ex.getMessage()));
-                i--;
-            }
+        double[] sides = new double[2];
+        for (int i = 0; i < 2; i++) {
+            IOUtilities.print(String.format(
+                    "Input length of side %s for Envelope %s: ", i + 1,
+                    envelopeNumber));
+            sides[i] = IOUtilities.inputDouble();
         }
-        return envelopes;
+        return new EnvelopeDto(sides[0], sides[1]);
     }
 }
