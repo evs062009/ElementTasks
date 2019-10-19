@@ -8,9 +8,4 @@ public class ConsoleEnvelopesOutput implements IEnvelopesOutput {
         System.out.printf(
                 "Envelopes can %sbe nested one into another.%n", addStr);
     }
-
-    public void printMessage(String message) {
-        System.out.println(message);
-        System.out.println();
-    }
 }

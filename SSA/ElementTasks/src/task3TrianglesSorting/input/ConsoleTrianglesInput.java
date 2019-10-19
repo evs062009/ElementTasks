@@ -1,7 +1,7 @@
 package task3TrianglesSorting.input;
 
 import task3TrianglesSorting.domains.Triangle;
-import utilities.InputUtilities;
+import utilities.IOUtilities;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,8 +19,8 @@ public class ConsoleTrianglesInput implements ITrianglesInput {
             try {
                 triangles.add(getNewTriangle());
             } catch (Exception ex) {
-                System.out.printf("Invalid triangle. Reason: %s%n",
-                        ex.getMessage());
+                IOUtilities.println(String.format(
+                        "Invalid triangle. Reason: %s", ex.getMessage()));
             }
         } while (isContinue());
         return triangles;
@@ -29,7 +29,7 @@ public class ConsoleTrianglesInput implements ITrianglesInput {
     private Triangle getNewTriangle() throws IllegalArgumentException {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Input triangle name: ");
+        IOUtilities.print("Input triangle name: ");
         String name = sc.nextLine().trim();
 
         double[] sides = new double[3];
@@ -40,15 +40,16 @@ public class ConsoleTrianglesInput implements ITrianglesInput {
     }
 
     private double inputSideLength(int i) throws NumberFormatException {
-        System.out.printf("Input length of side %s:", i);
-        return InputUtilities.input();
+        IOUtilities.print(String.format("Input length of side %s:", i));
+        return IOUtilities.inputDouble();
     }
 
     private boolean isContinue() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.printf("For adding another triangle input '%s' or '%s'. "
-                .concat("For finish input another symbol: "), Y, YES);
+        IOUtilities.print(String.format(
+                "For adding another triangle input '%s' or '%s'. "
+                .concat("For finish input another symbol: "), Y, YES));
         String input = sc.next().trim();
         return Y.equalsIgnoreCase(input) || YES.equalsIgnoreCase(input);
     }

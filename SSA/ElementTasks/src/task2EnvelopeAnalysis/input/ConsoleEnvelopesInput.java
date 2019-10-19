@@ -1,7 +1,7 @@
 package task2EnvelopeAnalysis.input;
 
 import task2EnvelopeAnalysis.domains.Envelope;
-import utilities.InputUtilities;
+import utilities.IOUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,17 +15,17 @@ public class ConsoleEnvelopesInput implements IEnvelopesInput {
 
         for (int i = 1; i <= envelopeNumber; i++) {
             try {
-                System.out.printf(
-                        "Input length of side A for Envelope %s:", i);
-                double sideA = InputUtilities.input();
-                System.out.printf(
-                        "Input length of side B for Envelope %s:", i);
-                double sideB = InputUtilities.input();
+                IOUtilities.print(String.format(
+                        "Input length of side A for Envelope %s:", i));
+                double sideA = IOUtilities.inputDouble();
+                IOUtilities.print(String.format(
+                        "Input length of side B for Envelope %s:", i));
+                double sideB = IOUtilities.inputDouble();
                 envelopes.add(new Envelope(sideA, sideB));
             } catch (IllegalArgumentException ex) {
-                System.out.printf(
+                IOUtilities.print(String.format(
                         "Wrong envelope sides. Reason: %s. Repeat input.%n",
-                        ex.getMessage());
+                        ex.getMessage()));
                 i--;
             }
         }

@@ -1,5 +1,7 @@
 package task1ChessBoard;
 
+import utilities.IOUtilities;
+
 public class ChessBoard implements IChessBoard {
 
     @Override
@@ -10,7 +12,7 @@ public class ChessBoard implements IChessBoard {
                     "Height and width have to be greater than 0.");
         }
         for (int i = 0; i < height; i++) {
-            printString(width, i);
+            printChessBoardLine(width, i);
         }
     }
 
@@ -22,11 +24,11 @@ public class ChessBoard implements IChessBoard {
         return " ";
     }
 
-    private void printString(int width, int i) {
+    private void printChessBoardLine(int length, int lineNumber) {
         String section;
         String end;
 
-        if (i % 2 == 0) {
+        if (lineNumber % 2 == 0) {
             section = getFirst().concat(getSecond());
             end = getFirst();
         } else {
@@ -34,13 +36,13 @@ public class ChessBoard implements IChessBoard {
             end = getSecond();
         }
 
-        int halfWidth = width / 2;
+        int halfWidth = length / 2;
         for (int j = 0; j < halfWidth; j++) {
-            System.out.print(section);
+            IOUtilities.print(section);
         }
-        if (width % 2 != 0) {
-            System.out.print(end);
+        if (length % 2 != 0) {
+            IOUtilities.print(end);
         }
-        System.out.println();
+        IOUtilities.println("");
     }
 }
