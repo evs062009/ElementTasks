@@ -3,6 +3,8 @@ package task3TrianglesSorting.domains;
 import task3TrianglesSorting.dto.TriangleDto;
 import utilities.MathUtilities;
 
+import java.math.RoundingMode;
+
 public class Triangle {
 
     private String name;
@@ -31,6 +33,6 @@ public class Triangle {
     @Override
     public String toString() {
         return String.format("[%s]: %s cm", name,
-                MathUtilities.round(area, 2));
+                MathUtilities.round(area, 2, RoundingMode.HALF_UP));
     }
 }
