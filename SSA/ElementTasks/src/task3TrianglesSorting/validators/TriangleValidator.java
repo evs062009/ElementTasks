@@ -12,7 +12,7 @@ public class TriangleValidator implements ITriangleValidator {
                     "Invalid triangle. It has to have 3 sides");
         }
         for (int i = 0; i < dto.getSides().length; i++) {
-            validateSideNotLessZero(dto.getSides()[i], i + 1);
+            validateSideNotLessZero(dto.getSide(i), i + 1);
         }
         validateSidesLessSumOtherTwo(dto.getSides());
     }

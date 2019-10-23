@@ -11,7 +11,7 @@ import utilities.IOUtilities;
 import java.util.LinkedList;
 import java.util.List;
 
-public class App {
+class App {
 
     private ITriangleInput input;
     private ITriangleValidator validator;

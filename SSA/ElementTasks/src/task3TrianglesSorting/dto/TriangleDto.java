@@ -17,4 +17,8 @@ public class TriangleDto {
     public double[] getSides() {
         return sides;
     }
+
+    public double getSide(int i) {
+        return sides[i];
+    }
 }

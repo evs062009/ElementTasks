@@ -23,14 +23,14 @@ public class Triangle {
         return area;
     }
 
-    private double getHeronTriangleArea(double a, double b, double c) {
-        double p = (a + b + c) / 2;
-        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
-    }
-
     @Override
     public String toString() {
         return String.format("[%s]: %s cm", name,
                 MathUtilities.round(area, 2));
+    }
+
+    private static double getHeronTriangleArea(double a, double b, double c) {
+        double p = (a + b + c) / 2;
+        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
     }
 }

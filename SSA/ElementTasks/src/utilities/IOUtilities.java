@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 public class IOUtilities {
 
-    public static double inputDouble() throws NumberFormatException {
-        Scanner sc = new Scanner(System.in);
+    private static Scanner sc;
+
+    public static double inputDouble(String message) throws NumberFormatException {
+        sc = new Scanner(System.in);
+        print(message);
         String input = sc.next().trim();
         return Double.parseDouble(input);
     }
@@ -26,12 +29,18 @@ public class IOUtilities {
     public static boolean isContinue() {
         final String Y = "y";
         final String YES = "yes";
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
 
         IOUtilities.print(String.format(
                 "For adding another triangle input '%s' or '%s'. "
                         .concat("For finish input another symbol: "), Y, YES));
         String input = sc.next().trim();
         return Y.equalsIgnoreCase(input) || YES.equalsIgnoreCase(input);
+    }
+
+    public static String inputString(String message) {
+        sc = new Scanner(System.in);
+        print(message);
+        return sc.nextLine();
     }
 }

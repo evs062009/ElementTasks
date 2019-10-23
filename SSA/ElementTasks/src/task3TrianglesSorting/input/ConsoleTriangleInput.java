@@ -3,8 +3,6 @@ package task3TrianglesSorting.input;
 import task3TrianglesSorting.dto.TriangleDto;
 import utilities.IOUtilities;
 
-import java.util.Scanner;
-
 public class ConsoleTriangleInput implements ITriangleInput {
 
     @Override
@@ -18,14 +16,11 @@ public class ConsoleTriangleInput implements ITriangleInput {
     }
 
     private String inputName() {
-        Scanner sc = new Scanner(System.in);
-
-        IOUtilities.print("Input triangle name: ");
-        return sc.nextLine().trim();
+        return IOUtilities.inputString("Input triangle name: ").trim();
     }
 
     private double inputSideLength(int sideNumber) throws NumberFormatException {
-        IOUtilities.print(String.format("Input length of side %s: ", sideNumber));
-        return IOUtilities.inputDouble();
+        return IOUtilities.inputDouble(
+                String.format("Input length of side %s: ", sideNumber));
     }
 }
