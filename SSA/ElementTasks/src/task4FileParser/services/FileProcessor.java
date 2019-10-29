@@ -15,8 +15,7 @@ public class FileProcessor implements IFileProcessor {
                         args[1]);
                 IOUtilities.println(String.format(
                         "Number of occurrences = %s", count));
-            }
-            if (args.length == 3) {
+            } else if (args.length == 3) {
                 StringUtilities.replaceInFile(args[0], args[1], args[2]);
             }
         } catch (IOException e) {
