@@ -1,34 +1,43 @@
 package task3TrianglesSorting.validators;
 
-import task3TrianglesSorting.dto.TriangleDto;
+import utilities.IOUtilities;
+import utilities.Validators;
 
 public class Validator implements IValidator {
 
     @Override
-    public void validate(TriangleDto dto)
-            throws IllegalArgumentException{
-        if (dto.getSides().length != 3) {
-            throw new  IllegalArgumentException(
-                    "Invalid triangle. It has to have 3 sides");
+    public boolean isValid(String[] args) {
+        int sidesNumber = 3;
+        double[] doubles;
+
+        boolean isValid = Validators.isNotNull(args)
+                && Validators.isStringArrLengthMore(args, 3)
+                && Validators.isStringArrLengthLess(args, 5);
+
+        if (isValid) {
+            doubles = new double[sidesNumber];
+            for (int i = 0; i < doubles.length; i++) {
+                try {
+                    doubles[i] = Double.parseDouble(args[i + 1]);
+                } catch (NumberFormatException e) {
+                    IOUtilities.println(String.format("Parameter %s can not be parsed to double.", i + 1));
+                    return false;
+                }
+            }
+            for (double d : doubles) {
+                if (!Validators.isPositive(d)) {
+                    IOUtilities.println(Validators.message);
+                    return false;
+                }
+            }
+        } else {
+            IOUtilities.println(Validators.message);
+            return false;
         }
-        for (int i = 0; i < dto.getSides().length; i++) {
-            validateSideNotLessZero(dto.getSide(i), i + 1);
-        }
-        validateSidesLessSumOtherTwo(dto.getSides());
+        return validateSidesLessSumOtherTwo(doubles);
     }
 
-    private void validateSideNotLessZero(double side, int sideNumber)
-            throws IllegalArgumentException {
-        if (side < 0) {
-            throw new IllegalArgumentException(
-                    String.format(
-                            "Invalid triangle. Side %s has to be not less than 0.",
-                            sideNumber));
-        }
-    }
-
-    private void validateSidesLessSumOtherTwo(double[] sides)
-            throws IllegalArgumentException {
+    private boolean validateSidesLessSumOtherTwo(double[] sides) {
         double sum = 0;
         for (double side : sides) {
             sum += side;
@@ -36,10 +45,12 @@ public class Validator implements IValidator {
         for (int i = 0; i < sides.length; i++) {
             double sumOtherTwo = sum - sides[i];
             if (sides[i] >= sumOtherTwo) {
-                throw new IllegalArgumentException(String.format(
+                IOUtilities.println(String.format(
                         "Invalid triangle. Side %s can not be greater than sum of other two sides.",
                         i + 1));
+                return false;
             }
         }
+        return true;
     }
 }

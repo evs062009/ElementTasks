@@ -8,10 +8,6 @@ public class Triangle extends Shape{
         super(name, parameters);
     }
 
-    public double getArea() {
-        return getValue();
-    }
-
     @Override
     public String toString() {
         return String.format("[%s]: %s cm", getName(),

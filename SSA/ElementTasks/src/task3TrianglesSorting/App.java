@@ -34,7 +34,7 @@ class App {
         do {
             try {
                 String[] parameters = input.inputParameters();
-                if (validator.validate(parameters)) {
+                if (validator.isValid(parameters)) {
                     shapes.add(factory.create(parameters));
                 }
             } catch (IllegalArgumentException ex) {
@@ -43,6 +43,6 @@ class App {
         } while (IOUtilities.isContinue());
 
         sorting.process(shapes);
-        output.printTriangles(shapes);
+        output.print(shapes);
     }
 }

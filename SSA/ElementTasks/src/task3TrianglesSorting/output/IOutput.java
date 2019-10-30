@@ -1,10 +1,10 @@
 package task3TrianglesSorting.output;
 
-import task3TrianglesSorting.domains.Triangle;
+import task3TrianglesSorting.domains.Shape;
 
 import java.util.List;
 
 public interface IOutput {
 
-    void printTriangles(List<Triangle> triangles);
+    void print(List<Shape> triangles);
 }

@@ -29,6 +29,14 @@ public class Validators {
         message = String.format("length not more than %s", than);
         return false;
     }
+    public static boolean isPositive(Double number) {
+        if (number > 0) {
+            return true;
+        } else {
+            message = String.format("%s is not positive.", number);
+            return false;
+        }
+    }
 
     private static void clearMessage() {
         message = "";

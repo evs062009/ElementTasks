@@ -1,6 +1,6 @@
 package task3TrianglesSorting.domains;
 
-public class Shape {
+public abstract class Shape {
     private String name;
     private double[] parameters;
     private double value;
