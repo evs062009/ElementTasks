@@ -5,7 +5,7 @@ import utilities.StringUtilities;
 
 import java.io.IOException;
 
-public class FileProcessor implements IFileProcessor {
+public class FileProcessorOnString implements IFileProcessor {
 
     @Override
     public void process(String[] args) {

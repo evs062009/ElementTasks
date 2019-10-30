@@ -1,6 +1,6 @@
 package task4FileParser;
 
-import task4FileParser.services.FileProcessor;
+import task4FileParser.services.FileProcessorOnChar;
 import task4FileParser.services.IFileProcessor;
 import task4FileParser.validators.IValidator;
 import task4FileParser.validators.Validator;
@@ -9,7 +9,7 @@ import utilities.IOUtilities;
 public class Main {
     public static void main(String[] args) {
         IValidator validator = new Validator();
-        IFileProcessor processor = new FileProcessor();
+        IFileProcessor processor = new FileProcessorOnChar();
 
         if (validator.isValid(args)) {
             processor.process(args);
