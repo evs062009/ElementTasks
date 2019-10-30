@@ -4,7 +4,7 @@ import task3TrianglesSorting.domains.Triangle;
 
 import java.util.List;
 
-public class ConsoleTrianglesOutput implements ITrianglesOutput {
+public class ConsoleOutput implements IOutput {
 
     @Override
     public void printTriangles(List<Triangle> triangles) {

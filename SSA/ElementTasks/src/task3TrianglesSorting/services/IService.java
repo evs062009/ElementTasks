@@ -4,7 +4,7 @@ import task3TrianglesSorting.domains.Triangle;
 
 import java.util.List;
 
-public interface ITrianglesSorting {
+public interface IService {
 
-    void sortTriangles(List<Triangle> triangles);
+    void process(List<Triangle> triangles);
 }

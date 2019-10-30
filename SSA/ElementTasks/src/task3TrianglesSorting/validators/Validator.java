@@ -2,10 +2,10 @@ package task3TrianglesSorting.validators;
 
 import task3TrianglesSorting.dto.TriangleDto;
 
-public class TriangleValidator implements ITriangleValidator {
+public class Validator implements IValidator {
 
     @Override
-    public void validateTriangleData(TriangleDto dto)
+    public void validate(TriangleDto dto)
             throws IllegalArgumentException{
         if (dto.getSides().length != 3) {
             throw new  IllegalArgumentException(

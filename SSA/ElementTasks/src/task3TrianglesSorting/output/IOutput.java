@@ -4,7 +4,7 @@ import task3TrianglesSorting.domains.Triangle;
 
 import java.util.List;
 
-public interface ITrianglesOutput {
+public interface IOutput {
 
     void printTriangles(List<Triangle> triangles);
 }
