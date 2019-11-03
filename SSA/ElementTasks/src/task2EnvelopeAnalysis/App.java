@@ -39,7 +39,7 @@ public class App {
                     envelopes.add(new Envelope(dto));
                 } catch (IllegalArgumentException ex) {
                     IOUtilities.print(String.format(
-                            "Wrong envelope sides. Reason: %s Repeat input.%n",
+                            "Wrong envelope sides. Reason: %s Repeat interfaces.%n",
                             ex.getMessage()));
                     i--;
                 }

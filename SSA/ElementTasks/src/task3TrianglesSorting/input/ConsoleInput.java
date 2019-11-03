@@ -1,14 +1,12 @@
 package task3TrianglesSorting.input;
 
+import common.interfaces.IInput;
 import utilities.IOUtilities;
 
 public class ConsoleInput implements IInput {
-
     @Override
-    public String[] inputParameters() throws NumberFormatException {
-        IOUtilities.print("Input triangle name (" +
-                "like name, Side A length, Side B length, Side C length: ");
-        String input = IOUtilities.inputString(null);
-        return input.trim().split(",");
+    public String input() {
+        return IOUtilities.inputString(
+                "Input triangle parameters divided with comma (like name, side A, side B, side C): ");
     }
 }

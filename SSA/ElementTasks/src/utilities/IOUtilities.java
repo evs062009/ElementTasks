@@ -32,16 +32,16 @@ public class IOUtilities {
         sc = new Scanner(System.in);
 
         IOUtilities.print(String.format(
-                "For adding another triangle input '%s' or '%s'. "
-                        .concat("For finish input another symbol: "), Y, YES));
+                "For adding another triangle interfaces '%s' or '%s'. "
+                        .concat("For finish interfaces another symbol: "), Y, YES));
         String input = sc.next().trim();
         return Y.equalsIgnoreCase(input) || YES.equalsIgnoreCase(input);
     }
 
-    public static String inputString(String message) {
+    public static String inputString(String title) {
         sc = new Scanner(System.in);
-        if (message != null && !message.isEmpty()) {
-            print(message);
+        if (title != null && !title.isEmpty()) {
+            print(title);
         }
         return sc.nextLine();
     }

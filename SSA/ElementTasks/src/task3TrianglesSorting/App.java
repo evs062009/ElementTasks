@@ -1,11 +1,13 @@
 package task3TrianglesSorting;
 
+import common.interfaces.IInput;
+import common.interfaces.IValidator;
 import task3TrianglesSorting.domains.Shape;
-import task3TrianglesSorting.input.IInput;
+import task3TrianglesSorting.domains.Triangle;
+import task3TrianglesSorting.misc.ShapeData;
 import task3TrianglesSorting.output.IOutput;
-import task3TrianglesSorting.services.IFactory;
+import task3TrianglesSorting.services.IConverter;
 import task3TrianglesSorting.services.IService;
-import task3TrianglesSorting.validators.IValidator;
 import utilities.IOUtilities;
 
 import java.util.LinkedList;
@@ -14,31 +16,38 @@ import java.util.List;
 class App {
 
     private IInput input;
+    private IConverter converter;
     private IValidator validator;
-    private IFactory factory;
     private IService sorting;
     private IOutput output;
 
-    App(IInput input, IValidator validator, IFactory factory, IService sorting,
+    App(IInput input, IConverter converter, IValidator validator, IService sorting,
         IOutput output) {
         this.input = input;
+        this.converter = converter;
         this.validator = validator;
-        this.factory = factory;
         this.sorting = sorting;
         this.output = output;
     }
 
     void execute() {
         List<Shape> shapes = new LinkedList<>();
-
+        ShapeData data;
         do {
+            String inputStr = input.input();
+
             try {
-                String[] parameters = input.inputParameters();
-                if (validator.isValid(parameters)) {
-                    shapes.add(factory.create(parameters));
-                }
+                data = converter.convert(inputStr);
             } catch (IllegalArgumentException ex) {
                 IOUtilities.println(ex.getMessage());
+                continue;
+            }
+
+            IValidator.Responce responce = validator.isValid(data);
+            if (responce.isValid()) {
+                shapes.add(new Triangle(data));
+            } else {
+                IOUtilities.println(responce.getMessage());
             }
         } while (IOUtilities.isContinue());
 
