@@ -1,9 +1,9 @@
 package task4FileParser.validator;
 
-public class FileParserValidator implements IFileParserValidator {
+public class Validator implements IValidator {
 
     @Override
     public boolean isValid(String[] args) {
-        return false;
+        return args != null && args.length > 1;
     }
 }

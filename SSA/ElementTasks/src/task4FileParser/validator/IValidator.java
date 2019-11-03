@@ -1,6 +1,6 @@
 package task4FileParser.validator;
 
-public interface IFileParserValidator {
+public interface IValidator {
 
     boolean isValid(String[] args);
 }

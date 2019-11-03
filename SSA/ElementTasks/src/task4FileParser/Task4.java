@@ -2,18 +2,27 @@ package task4FileParser;
 
 import common.input.IInput;
 import task4FileParser.services.IFileProcessor;
-import task4FileParser.validator.IFileParserValidator;
+import task4FileParser.validator.IValidator;
+import utilities.IOUtilities;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 class Task4 {
 
     private IInput input;
-    private IFileParserValidator validator;
-    private IFileProcessor processor;
+    private IValidator validator;
+    private IFileProcessor matchCounter;
+    private IFileProcessor replacer;
 
-    Task4(IInput input, IFileParserValidator validator, IFileProcessor processor) {
+    Task4(IInput input, IValidator validator, IFileProcessor matchCounter, IFileProcessor replacer) {
         this.input = input;
         this.validator = validator;
-        this.processor = processor;
+        this.matchCounter = matchCounter;
+        this.replacer = replacer;
     }
 
     void execute() {
@@ -31,7 +40,23 @@ class Task4 {
 
             String[] args = string.split(separator);
             if (validator.isValid(args)) {
-                processor.process(args);
+                String filePath = args[0];
+                Path path = Paths.get(filePath);
+                String strFromFile = "";
+                try {
+                    strFromFile = Files.lines(path).collect(Collectors.joining());
+                } catch (IOException e) {
+                    IOUtilities.println(String.format("Invalid file %s.", e.getMessage()));
+                }
+                if (args.length == 2) {
+//                    args[1]
+                    int count = matchCounter.process(new String[]{strFromFile, args[1]});
+                    IOUtilities.println(String.format(
+                            "Number of occurrences = %s", count));
+                } else if (args.length == 3) {
+                    int result = replacer.process(new String[]{strFromFile, });
+                }
+                replacer.process(args);
             }
         }
     }
