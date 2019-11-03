@@ -30,10 +30,8 @@ public class ShapeDataConverterTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void convertNullInput() {
-        //GIVEN
-        String input = null;
         //WHEN
-        converter.convert(input);
+        converter.convert(null);
     }
 
     @Test(expected = IllegalArgumentException.class)

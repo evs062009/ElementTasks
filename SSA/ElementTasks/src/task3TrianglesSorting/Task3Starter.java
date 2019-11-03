@@ -13,20 +13,20 @@ import task3TrianglesSorting.services.IConverter;
 import task3TrianglesSorting.services.IService;
 import task3TrianglesSorting.services.SortingByArea;
 import task3TrianglesSorting.services.ShapeDataConverter;
-import common.interfaces.IValidator;
+import task3TrianglesSorting.validator.IShapeValidator;
 import task3TrianglesSorting.validator.TriangleValidator;
 
-public class Starter implements IStarter {
+public class Task3Starter implements IStarter {
 
     public void startApp(){
         /*Starts application*/
 
         IInput input = new ConsoleInput();
         IConverter converter = new ShapeDataConverter();
-        IValidator validator = new TriangleValidator();
+        IShapeValidator validator = new TriangleValidator();
         IService service = new SortingByArea();
         IOutput output = new ConsoleOutput();
-        App app = new App(input, converter, validator, service, output);
+        Task3 app = new Task3(input, converter, validator, service, output);
         app.execute();
     }
 }

@@ -1,7 +1,8 @@
 package task3TrianglesSorting;
 
 import common.interfaces.IInput;
-import common.interfaces.IValidator;
+import common.misc.Response;
+import task3TrianglesSorting.validator.IShapeValidator;
 import task3TrianglesSorting.domains.Shape;
 import task3TrianglesSorting.domains.Triangle;
 import task3TrianglesSorting.misc.ShapeData;
@@ -13,17 +14,17 @@ import utilities.IOUtilities;
 import java.util.LinkedList;
 import java.util.List;
 
-class App {
+class Task3 {
     /*The main logic of application.*/
 
     private IInput input;
     private IConverter converter;
-    private IValidator validator;
+    private IShapeValidator validator;
     private IService sorting;
     private IOutput output;
 
-    App(IInput input, IConverter converter, IValidator validator, IService sorting,
-        IOutput output) {
+    Task3(IInput input, IConverter converter, IShapeValidator validator, IService sorting,
+          IOutput output) {
         this.input = input;
         this.converter = converter;
         this.validator = validator;
@@ -44,7 +45,7 @@ class App {
                 continue;
             }
 
-            IValidator.Response response = validator.isValid(data);
+            Response response = validator.isValid(data);
             if (response.isValid()) {
                 shapes.add(new Triangle(data));
             } else {

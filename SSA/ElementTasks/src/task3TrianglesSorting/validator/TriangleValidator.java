@@ -1,6 +1,6 @@
 package task3TrianglesSorting.validator;
 
-import common.interfaces.IValidator;
+import common.misc.Response;
 import task3TrianglesSorting.misc.ShapeData;
 import task3TrianglesSorting.validator.validators.ISidesValidator;
 import task3TrianglesSorting.validator.validators.IsEachSideLessSumOtherTwo;
@@ -9,10 +9,11 @@ import task3TrianglesSorting.validator.validators.IsSidesGreaterThanZero;
 import java.util.Arrays;
 import java.util.List;
 
-public class TriangleValidator implements IValidator {
+public class TriangleValidator implements IShapeValidator {
 
     /**
      * Checks if the data is valid for creation a triangle using a list of validators.
+     *
      * @param data the data for creating a triangle.
      * @return Response object which contains true and empty message, when data is valid for creation a triangle,
      * or false and warning message otherwise.
@@ -40,6 +41,7 @@ public class TriangleValidator implements IValidator {
 
         /**
          * Checks if the array of sides contains three sides.
+         *
          * @param sides the array of sides
          * @return Response object which contains true and empty message, when the array has three elements,
          * or false and warning message otherwise.

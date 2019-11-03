@@ -1,6 +1,6 @@
 package task3TrianglesSorting.validator;
 
-import common.interfaces.IValidator;
+import common.misc.Response;
 import org.junit.Before;
 import org.junit.Test;
 import task3TrianglesSorting.misc.ShapeData;
@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class TriangleValidatorTest {
 
-    private IValidator validator;
+    private IShapeValidator validator;
 
     @Before
     public void setUp() {
@@ -23,7 +23,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 2.5, 3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Response response = validator.isValid(data);
+        Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertTrue(actual);
@@ -36,7 +36,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 2.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Response response = validator.isValid(data);
+        Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);
@@ -49,7 +49,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 0, 3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Response response = validator.isValid(data);
+        Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);
@@ -62,7 +62,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 2.5, -3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Response response = validator.isValid(data);
+        Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);
@@ -75,7 +75,7 @@ public class TriangleValidatorTest {
         double[] sides = {11.5, 2.5, 3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Response response = validator.isValid(data);
+        Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);

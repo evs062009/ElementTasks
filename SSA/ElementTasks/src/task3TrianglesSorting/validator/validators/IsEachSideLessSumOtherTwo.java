@@ -1,11 +1,11 @@
 package task3TrianglesSorting.validator.validators;
 
-import common.interfaces.IValidator;
+import common.misc.Response;
 
 public class IsEachSideLessSumOtherTwo implements ISidesValidator {
 
     @Override
-    public IValidator.Response isValid(double[] sides) {
+    public Response isValid(double[] sides) {
         double sum = 0;
         for (double side : sides) {
             sum += side;
@@ -13,10 +13,10 @@ public class IsEachSideLessSumOtherTwo implements ISidesValidator {
         for (double side : sides) {
             double sumOtherTwo = sum - side;
             if (side >= sumOtherTwo) {
-                return new IValidator.Response(false,
+                return new Response(false,
                         String.format("Side %s can not be greater than sum of other two sides.", side));
             }
         }
-        return new IValidator.Response(true);
+        return new Response(true);
     }
 }

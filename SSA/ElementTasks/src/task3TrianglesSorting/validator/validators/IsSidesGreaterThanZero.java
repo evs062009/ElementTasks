@@ -1,17 +1,17 @@
 package task3TrianglesSorting.validator.validators;
 
-import common.interfaces.IValidator;
+import common.misc.Response;
 
 public class IsSidesGreaterThanZero implements ISidesValidator {
 
     @Override
-    public IValidator.Response isValid(double[] sides) {
+    public Response isValid(double[] sides) {
         for (double parameter : sides) {
             if (parameter <= 0) {
-                return new IValidator.Response(false,
+                return new Response(false,
                         String.format("Side have to be greater than zero: %s.", parameter));
             }
         }
-        return new IValidator.Response(true);
+        return new Response(true);
     }
 }

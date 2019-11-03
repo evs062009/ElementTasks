@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class FileProcessorOnTempFile /*implements IFileProcessor*/ {
+public class FileProcessorOnTempFile implements IFileProcessor {
     private String path;
     private int[] original;
     private int i;

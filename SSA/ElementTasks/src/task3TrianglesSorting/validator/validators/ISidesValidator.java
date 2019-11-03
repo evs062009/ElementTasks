@@ -1,8 +1,8 @@
 package task3TrianglesSorting.validator.validators;
 
-import common.interfaces.IValidator;
+import common.misc.Response;
 
 public interface ISidesValidator {
 
-    IValidator.Response isValid(double[] sides);
+    Response isValid(double[] sides);
 }
