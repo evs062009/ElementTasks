@@ -28,19 +28,20 @@ class Task4 {
 
     void execute() {
         while (true) {
-            String separator = ";";
-            String message = String.format("Input parameters divided by '%s'\n.", separator)
+            String separator = " ";
+            String message = String.format("Input parameters divided by '%s'.\n", separator)
                     .concat("2 for string matching counting: path to the file and string.\n")
                     .concat("3 for string replacing: path to the file, search string and string for replace.\n")
-                    .concat("For exit input 'exit'");
+                    .concat("For exit input 'exit': ");
             String string = input.input(message).trim();
 
             if ("exit".equalsIgnoreCase(string)) {
                 break;
             }
-            String[] args = string.split(separator);
+            String[] args = string.trim().split(separator);
             if (validator.isValid(args)) {
                 processFile(args);
+                IOUtilities.println("-----------------------------------------------------");
             } else {
                 IOUtilities.println("Invalid parameters");
             }
