@@ -18,11 +18,11 @@ public class IOUtilities {
         System.out.println();
     }
 
-    public static void print(String str){
+    public static void print(String str) {
         System.out.print(str);
     }
 
-    public static void println(String str){
+    public static void println(String str) {
         System.out.println(str);
     }
 
@@ -40,7 +40,9 @@ public class IOUtilities {
 
     public static String inputString(String message) {
         sc = new Scanner(System.in);
-        print(message);
+        if (message != null && !message.isEmpty()) {
+            print(message);
+        }
         return sc.nextLine();
     }
 }

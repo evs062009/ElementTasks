@@ -1,38 +1,16 @@
 package task3TrianglesSorting.domains;
 
-import task3TrianglesSorting.dto.TriangleDto;
 import utilities.MathUtilities;
 
-import java.math.RoundingMode;
+public class Triangle extends Shape{
 
-public class Triangle {
-
-    private String name;
-    private double[] sides;
-    private double area;
-
-    public Triangle(String name, double[] sides) {
-        this.name = name;
-        this.sides = sides;
-        this.area = getHeronTriangleArea(sides[0], sides[1], sides[2]);
-    }
-
-    public Triangle(TriangleDto dto) {
-        this(dto.getName(), dto.getSides());
-    }
-
-    public double getArea() {
-        return area;
+    public Triangle(String name, double[] parameters) {
+        super(name, parameters);
     }
 
     @Override
     public String toString() {
-        return String.format("[%s]: %s cm", name,
-                MathUtilities.round(area, 2, RoundingMode.HALF_UP));
-    }
-
-    private static double getHeronTriangleArea(double a, double b, double c) {
-        double p = (a + b + c) / 2;
-        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        return String.format("[%s]: %s cm", getName(),
+                MathUtilities.round(getValue(), 2));
     }
 }
