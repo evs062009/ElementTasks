@@ -12,7 +12,7 @@ public class TriangleFactory implements IFactory {
             sides[i] = Double.parseDouble((parameters[i + 1]).trim());
         }
         Triangle triangle = new Triangle(name, sides);
-        triangle.setValue(getHeronTriangleArea(sides[0], sides[1], sides[2]));
+        triangle.setResultValue(getHeronTriangleArea(sides[0], sides[1], sides[2]));
         return triangle;
     }
 

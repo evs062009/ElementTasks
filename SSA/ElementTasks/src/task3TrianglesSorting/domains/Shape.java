@@ -3,7 +3,7 @@ package task3TrianglesSorting.domains;
 public abstract class Shape {
     private String name;
     private double[] parameters;
-    private double value;
+    private double resultValue;
 
     public Shape(String name, double[] parameters) {
         this.name = name;
@@ -14,11 +14,11 @@ public abstract class Shape {
         return name;
     }
 
-    public double getValue() {
-        return value;
+    public double getResultValue() {
+        return resultValue;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setResultValue(double resultValue) {
+        this.resultValue = resultValue;
     }
 }
