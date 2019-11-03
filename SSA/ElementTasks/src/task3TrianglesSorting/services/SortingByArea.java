@@ -8,7 +8,7 @@ public class SortingByArea implements IService {
 
     @Override
     public void process(List<Shape> shapes) {
-        shapes.sort((o1, o2) -> Double.compare(o2.getResultValue(),
-                o1.getResultValue()));
+        shapes.sort((o1, o2) -> Double.compare(o2.getValue(),
+                o1.getValue()));
     }
 }

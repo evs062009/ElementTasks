@@ -11,6 +11,6 @@ public class Triangle extends Shape{
     @Override
     public String toString() {
         return String.format("[%s]: %s cm", getName(),
-                MathUtilities.round(getResultValue(), 2));
+                MathUtilities.round(getValue(), 2));
     }
 }
