@@ -43,11 +43,11 @@ class App {
                 continue;
             }
 
-            IValidator.Responce responce = validator.isValid(data);
-            if (responce.isValid()) {
+            IValidator.Responce response = validator.isValid(data);
+            if (response.isValid()) {
                 shapes.add(new Triangle(data));
             } else {
-                IOUtilities.println(responce.getMessage());
+                IOUtilities.println(response.getMessage());
             }
         } while (IOUtilities.isContinue());
 

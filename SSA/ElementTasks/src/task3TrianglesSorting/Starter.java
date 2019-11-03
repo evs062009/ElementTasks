@@ -16,11 +16,11 @@ public class Starter implements IStarter {
 
     public void startApp(){
         IInput input = new ConsoleInput();
+        IConverter converter = new ShapeDataConverter();
         IValidator validator = new TriangleValidator();
-        IConverter factory = new ShapeDataConverter();
         IService service = new SortingByArea();
         IOutput output = new ConsoleOutput();
-        App app = new App(input, validator, factory, service, output);
+        App app = new App(input, converter, validator, service, output);
         app.execute();
     }
 }

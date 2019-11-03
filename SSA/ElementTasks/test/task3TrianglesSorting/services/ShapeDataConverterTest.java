@@ -1,0 +1,70 @@
+package task3TrianglesSorting.services;
+
+import org.junit.Before;
+import org.junit.Test;
+import task3TrianglesSorting.misc.ShapeData;
+
+import static org.junit.Assert.assertEquals;
+
+public class ShapeDataConverterTest {
+
+    private IConverter converter;
+
+    @Before
+    public void setUp() {
+        converter = new ShapeDataConverter();
+    }
+
+    @Test
+    public void convertCorrectInput() {
+        //GIVEN
+        String input = "name, 1.5, 2.5, 3.5";
+        String name = "name";
+        double[] doubles = {1.5, 2.5, 3.5};
+        ShapeData expected = new ShapeData(name, doubles);
+        //WHEN
+        ShapeData actual = converter.convert(input);
+        //THEN
+        assertEquals(expected, actual);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void convertNullInput() {
+        //GIVEN
+        String input = null;
+        //WHEN
+        converter.convert(input);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void convertEmptyInput() {
+        //GIVEN
+        String input = "";
+        //WHEN
+        converter.convert(input);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void convertLessThanTwoParameters() {
+        //GIVEN
+        String input = "name ";
+        //WHEN
+        converter.convert(input);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void convertGetInputWithMissedSeparator() {
+        //GIVEN
+        String input = "name, 1.5, 2.5 3.5";
+        //WHEN
+        converter.convert(input);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void convertCannotConvertDoubleToString() {
+        //GIVEN
+        String input = "name, asg, 2.5 3.5";
+        //WHEN
+        converter.convert(input);
+    }
+}

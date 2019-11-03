@@ -12,17 +12,21 @@ public class ShapeDataConverter implements IConverter {
             throw new IllegalArgumentException("Invalid input string.");
         }
 
-        String[] paramArr = parameters.split(",");
+        String[] paramArr = parameters.trim().split(getSeparator());
         if (paramArr.length < 2) {
             throw new IllegalArgumentException("Too few parameters.");
         }
 
         double[] doubles;
         try {
-            doubles = Arrays.stream(paramArr).skip(1).mapToDouble(Double::parseDouble).toArray();
+            doubles = Arrays.stream(paramArr).skip(1).map(String::trim).mapToDouble(Double::parseDouble).toArray();
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Input parameters can not be parsed to double: " + e.getMessage());
         }
-        return new ShapeData(paramArr[0], doubles);
+        return new ShapeData(paramArr[0].trim(), doubles);
+    }
+
+    private String getSeparator() {
+        return ",";
     }
 }

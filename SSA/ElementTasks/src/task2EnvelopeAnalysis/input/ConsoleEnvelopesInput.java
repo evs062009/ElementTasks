@@ -14,7 +14,7 @@ public class ConsoleEnvelopesInput implements IEnvelopesInput {
             IOUtilities.print(String.format(
                     "Input length of side %s for Envelope %s: ", i + 1,
                     envelopeNumber));
-            sides[i] = IOUtilities.inputDouble();
+//            sides[i] = IOUtilities.inputDouble();
         }
         return new EnvelopeDto(sides[0], sides[1]);
     }
