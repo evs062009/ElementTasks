@@ -14,12 +14,12 @@ public class ShapeDataConverter implements IConverter {
      *          or when all needed arguments can not be parsed to double.
      */
     @Override
-    public ShapeData convert(String parameters) throws IllegalArgumentException {
+    public ShapeData convert(String parameters, String separator) throws IllegalArgumentException {
         if (parameters == null || parameters.isEmpty()) {
             throw new IllegalArgumentException("Invalid input string.");
         }
 
-        String[] paramArr = parameters.trim().split(getSeparator());
+        String[] paramArr = parameters.trim().split(separator);
         if (paramArr.length < 2) {
             throw new IllegalArgumentException("Too few parameters.");
         }

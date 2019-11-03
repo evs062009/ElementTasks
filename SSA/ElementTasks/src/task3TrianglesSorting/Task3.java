@@ -35,12 +35,15 @@ class Task3 {
     void execute() {
         List<Shape> shapes = new LinkedList<>();
         ShapeData data;
+        String separator = ",";
         do {
-            String message = "Input triangle parameters divided with comma (like name, side A, side B, side C): ";
+            String message = String.format(
+                    "Input triangle parameters divided with '%s' (like name, side A, side B, side C): ",
+                    separator);
             String inputStr = input.input(message);
 
             try {
-                data = converter.convert(inputStr);
+                data = converter.convert(inputStr, separator);
             } catch (IllegalArgumentException ex) {
                 IOUtilities.println(ex.getMessage());
                 continue;
