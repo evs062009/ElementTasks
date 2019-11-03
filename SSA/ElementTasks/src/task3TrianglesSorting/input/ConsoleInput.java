@@ -4,6 +4,7 @@ import common.interfaces.IInput;
 import utilities.IOUtilities;
 
 public class ConsoleInput implements IInput {
+
     @Override
     public String input() {
         return IOUtilities.inputString(

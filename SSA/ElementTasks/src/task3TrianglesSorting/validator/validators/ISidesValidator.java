@@ -4,5 +4,5 @@ import common.interfaces.IValidator;
 
 public interface ISidesValidator {
 
-    IValidator.Responce isValid(double[] sides);
+    IValidator.Response isValid(double[] sides);
 }

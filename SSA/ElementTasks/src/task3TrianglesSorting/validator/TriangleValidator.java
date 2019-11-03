@@ -11,9 +11,15 @@ import java.util.List;
 
 public class TriangleValidator implements IValidator {
 
+    /**
+     * Checks if the data is valid for creation a triangle using a list of validators.
+     * @param data the data for creating a triangle.
+     * @return Response object which contains true and empty message, when data is valid for creation a triangle,
+     * or false and warning message otherwise.
+     */
     @Override
-    public Responce isValid(ShapeData data) {
-        Responce responce = new Responce(false, "input data == null");
+    public Response isValid(ShapeData data) {
+        Response response = new Response(false, "input data == null");
         if (data != null) {
             List<ISidesValidator> validators = Arrays.asList(
                     new IsSidesNotLessThanThree(),
@@ -21,23 +27,29 @@ public class TriangleValidator implements IValidator {
                     new IsEachSideLessSumOtherTwo());
 
             for (ISidesValidator validator : validators) {
-                responce = validator.isValid(data.getDoubles());
-                if (!responce.isValid()) {
+                response = validator.isValid(data.getDoubles());
+                if (!response.isValid()) {
                     break;
                 }
             }
         }
-        return responce;
+        return response;
     }
 
     private class IsSidesNotLessThanThree implements ISidesValidator {
 
+        /**
+         * Checks if the array of sides contains three sides.
+         * @param sides the array of sides
+         * @return Response object which contains true and empty message, when the array has three elements,
+         * or false and warning message otherwise.
+         */
         @Override
-        public Responce isValid(double[] sides) {
+        public Response isValid(double[] sides) {
             if (sides == null || sides.length < 3) {
-                return new Responce(false, "Triangle must have 3 sides.");
+                return new Response(false, "Triangle must have 3 sides.");
             }
-            return new Responce(true);
+            return new Response(true);
         }
     }
 }

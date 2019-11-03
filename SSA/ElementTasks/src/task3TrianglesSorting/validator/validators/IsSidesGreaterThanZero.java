@@ -5,13 +5,13 @@ import common.interfaces.IValidator;
 public class IsSidesGreaterThanZero implements ISidesValidator {
 
     @Override
-    public IValidator.Responce isValid(double[] sides) {
+    public IValidator.Response isValid(double[] sides) {
         for (double parameter : sides) {
             if (parameter <= 0) {
-                return new IValidator.Responce(false,
+                return new IValidator.Response(false,
                         String.format("Side have to be greater than zero: %s.", parameter));
             }
         }
-        return new IValidator.Responce(true);
+        return new IValidator.Response(true);
     }
 }

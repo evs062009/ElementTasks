@@ -6,6 +6,10 @@ import java.util.List;
 
 public class ConsoleOutput implements IOutput {
 
+    /**
+     * Outputs list of shapes.
+     * @param shapes list of shapes.
+     */
     @Override
     public void print(List<Shape> shapes) {
         System.out.println("============= Triangles list: ===============");

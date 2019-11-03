@@ -4,18 +4,20 @@ import task3TrianglesSorting.misc.ShapeData;
 
 public interface IValidator {
 
-    Responce isValid(ShapeData data);
+    Response isValid(ShapeData data);
 
-    class Responce {
+    /*Response which returns after validation*/
+    class Response {
+
         private boolean isValid;
         private String message;
 
-        public Responce(boolean isValid) {
+        public Response(boolean isValid) {
             this.isValid = isValid;
             this.message = "";
         }
 
-        public Responce(boolean isValid, String message) {
+        public Response(boolean isValid, String message) {
             this.isValid = isValid;
             this.message = message;
         }

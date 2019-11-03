@@ -6,6 +6,13 @@ import java.util.Arrays;
 
 public class ShapeDataConverter implements IConverter {
 
+    /**
+     * Parses input string to one string and double array creates ShapeData and returns it.
+     * @param parameters parameters that are being converted to data for creating a shape.
+     * @return the data for creating a shape.
+     * @throws IllegalArgumentException when parameters == null, empty, parse to less than two arguments,
+     *          or when all needed arguments can not be parsed to double.
+     */
     @Override
     public ShapeData convert(String parameters) throws IllegalArgumentException {
         if (parameters == null || parameters.isEmpty()) {

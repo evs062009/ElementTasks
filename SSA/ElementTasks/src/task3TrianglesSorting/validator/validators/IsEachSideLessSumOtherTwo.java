@@ -5,7 +5,7 @@ import common.interfaces.IValidator;
 public class IsEachSideLessSumOtherTwo implements ISidesValidator {
 
     @Override
-    public IValidator.Responce isValid(double[] sides) {
+    public IValidator.Response isValid(double[] sides) {
         double sum = 0;
         for (double side : sides) {
             sum += side;
@@ -13,10 +13,10 @@ public class IsEachSideLessSumOtherTwo implements ISidesValidator {
         for (double side : sides) {
             double sumOtherTwo = sum - side;
             if (side >= sumOtherTwo) {
-                return new IValidator.Responce(false,
+                return new IValidator.Response(false,
                         String.format("Side %s can not be greater than sum of other two sides.", side));
             }
         }
-        return new IValidator.Responce(true);
+        return new IValidator.Response(true);
     }
 }

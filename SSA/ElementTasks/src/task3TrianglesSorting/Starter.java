@@ -1,3 +1,7 @@
+/*
+ * SSA Elementary task #3.
+ * Sorts triangles by area descending.
+ */
 package task3TrianglesSorting;
 
 import common.interfaces.IStarter;
@@ -15,6 +19,8 @@ import task3TrianglesSorting.validator.TriangleValidator;
 public class Starter implements IStarter {
 
     public void startApp(){
+        /*Starts application*/
+
         IInput input = new ConsoleInput();
         IConverter converter = new ShapeDataConverter();
         IValidator validator = new TriangleValidator();

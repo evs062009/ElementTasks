@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 class App {
+    /*The main logic of application.*/
 
     private IInput input;
     private IConverter converter;
@@ -43,7 +44,7 @@ class App {
                 continue;
             }
 
-            IValidator.Responce response = validator.isValid(data);
+            IValidator.Response response = validator.isValid(data);
             if (response.isValid()) {
                 shapes.add(new Triangle(data));
             } else {

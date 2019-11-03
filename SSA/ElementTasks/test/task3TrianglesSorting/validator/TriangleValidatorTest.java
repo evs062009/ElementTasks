@@ -23,7 +23,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 2.5, 3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Responce response = validator.isValid(data);
+        IValidator.Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertTrue(actual);
@@ -36,7 +36,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 2.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Responce response = validator.isValid(data);
+        IValidator.Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);
@@ -49,7 +49,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 0, 3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Responce response = validator.isValid(data);
+        IValidator.Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);
@@ -62,7 +62,7 @@ public class TriangleValidatorTest {
         double[] sides = {1.5, 2.5, -3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Responce response = validator.isValid(data);
+        IValidator.Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);
@@ -75,7 +75,7 @@ public class TriangleValidatorTest {
         double[] sides = {11.5, 2.5, 3.5};
         ShapeData data = new ShapeData(name, sides);
         //WHEN
-        IValidator.Responce response = validator.isValid(data);
+        IValidator.Response response = validator.isValid(data);
         boolean actual = response.isValid();
         //THEN
         assertFalse(actual);
