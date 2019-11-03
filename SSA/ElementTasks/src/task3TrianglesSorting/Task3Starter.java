@@ -5,8 +5,8 @@
 package task3TrianglesSorting;
 
 import common.interfaces.IStarter;
-import task3TrianglesSorting.input.ConsoleInput;
-import common.interfaces.IInput;
+import common.input.ConsoleInput;
+import common.input.IInput;
 import task3TrianglesSorting.output.ConsoleOutput;
 import task3TrianglesSorting.output.IOutput;
 import task3TrianglesSorting.services.IConverter;

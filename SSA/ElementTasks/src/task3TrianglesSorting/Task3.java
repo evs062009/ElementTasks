@@ -1,6 +1,6 @@
 package task3TrianglesSorting;
 
-import common.interfaces.IInput;
+import common.input.IInput;
 import common.misc.Response;
 import task3TrianglesSorting.validator.IShapeValidator;
 import task3TrianglesSorting.domains.Shape;
@@ -36,7 +36,8 @@ class Task3 {
         List<Shape> shapes = new LinkedList<>();
         ShapeData data;
         do {
-            String inputStr = input.input();
+            String message = "Input triangle parameters divided with comma (like name, side A, side B, side C): ";
+            String inputStr = input.input(message);
 
             try {
                 data = converter.convert(inputStr);
