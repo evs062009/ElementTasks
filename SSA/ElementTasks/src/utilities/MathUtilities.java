@@ -16,4 +16,16 @@ public class MathUtilities {
         bigDecimal = bigDecimal.setScale(places, mode);
         return bigDecimal.doubleValue();
     }
+
+    public static int pow(int number, int exp) {
+        int result = 1;
+        while (exp > 0) {
+            if (exp % 2 == 1) {
+                result *= number;
+            }
+            number *= number;
+            exp /= 2;
+        }
+        return result;
+    }
 }
