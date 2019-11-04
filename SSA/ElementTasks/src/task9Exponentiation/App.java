@@ -20,7 +20,7 @@ public class App {
             int result = MathUtilities.pow(number, exp);
             IOUtilities.println(String.format("%s pow %s = %s", number, exp, result));
         } else {
-            IOUtilities.println(invalid);
+            IOUtilities.println(invalid + "it needs two integer numbers.");
         }
     }
 }
