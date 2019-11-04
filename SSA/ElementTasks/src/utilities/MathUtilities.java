@@ -2,6 +2,8 @@ package utilities;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MathUtilities {
 
@@ -27,5 +29,21 @@ public class MathUtilities {
             exp /= 2;
         }
         return result;
+    }
+
+    public static List<Long> fibonacchiSequence(long threshold) {
+        List<Long> fibonacchi = new ArrayList<>();
+        fibonacchi.add(1L);
+        long x = 1;
+        long y = 1;
+        long f = 1;
+
+        while (f < threshold) {
+            fibonacchi.add(f);
+            f = x + y;
+            x = y;
+            y = f;
+        }
+        return fibonacchi;
     }
 }

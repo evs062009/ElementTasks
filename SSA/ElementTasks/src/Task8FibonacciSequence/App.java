@@ -1,66 +1,68 @@
 package Task8FibonacciSequence;
 
+import org.jetbrains.annotations.Nullable;
 import utilities.IOUtilities;
+import utilities.MathUtilities;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class App {
 
     public void execute(String[] args) {
-        String invalid = "Invalid arguments: ";
-
         if (args != null && args.length > 0) {
-            List<Long> fibonacchi;
+            List<Long> fibonacchi = null;
 
             if (args.length == 1) {
-                int numberLong = 0;
-                try {
-                    numberLong = Integer.parseInt(args[0]);
-                } catch (NumberFormatException e) {
-                    IOUtilities.println(invalid);
-                }
-
-                //fixme при 3 получается 9000, а надо 999
-                long threshold = Math.round(9 * Math.pow(10, numberLong));
-
-                //fixme delete
-                System.out.println(threshold);
-                //
-
+                fibonacchi = getFibonacchiSequence(args[0]);
             } else if (args.length == 2) {
-
+                fibonacchi = getFibonacchiSequence(args[0], args[1]);
             }
 
-//            try {
-//                number = Integer.parseInt(args[0]);
-//                exp = Integer.parseInt(args[1]);
-//            } catch (NumberFormatException e) {
-//                IOUtilities.println(invalid + e.getMessage());
-//            }
-//            int result = MathUtilities.pow(number, exp);
-//            IOUtilities.println(String.format("%s pow %s = %s", number, exp, result));
-//        } else {
-//            IOUtilities.println(invalid);
-//        }
-//
-//        System.out.println(fibonacchi);
+            if (fibonacchi != null && !fibonacchi.isEmpty()) {
+                IOUtilities.println(fibonacchi.toString());
+                return;
+            }
         }
-        IOUtilities.println(invalid + "no arguments.");
+        IOUtilities.println("Invalid arguments.");
+    }
 
-//    private static List<Long> fibonacchi(long threshold) {
-//        List<Long> fibonacchi = new ArrayList<>();
-//        fibonacchi.add(1L);
-//        long x = 1;
-//        long y = 1;
-//        long f = 1;
-//
-//        while (f < threshold) {
-//            fibonacchi.add(f);
-//            f = x + y;
-//            x = y;
-//            y = f;
-//        }
-//        return fibonacchi;
+    @Nullable
+    private List<Long> getFibonacchiSequence(String numberLengthStr) {
+        int numberLength;
+        try {
+            numberLength = Integer.parseInt(numberLengthStr);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        return MathUtilities.fibonacchiSequence(getThreshold(numberLength));
+    }
+
+    @Nullable
+    private List<Long> getFibonacchiSequence(String bottomStr, String topStr) {
+        long bottomThreshold;
+        long topThreshold;
+
+        try {
+            bottomThreshold = Long.parseLong(bottomStr);
+            topThreshold = Long.parseLong(topStr);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        if (bottomThreshold > topThreshold) {
+            return null;
+        }
+
+        List<Long> fibonacchi = MathUtilities.fibonacchiSequence(topThreshold);
+        return fibonacchi.stream().filter(e -> e >= bottomThreshold).collect(Collectors.toList());
+    }
+
+    private long getThreshold(int numberLength) {
+        int base = 9;
+        long number = 0;
+        for (int i = 0; i < numberLength; i++) {
+            number = number + base * Math.round(Math.pow(10, i));
+        }
+        return number;
     }
 }
-
