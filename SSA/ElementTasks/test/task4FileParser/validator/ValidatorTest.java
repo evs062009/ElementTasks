@@ -16,44 +16,32 @@ public class ValidatorTest {
     }
 
     @Test
-    public void validatorGetValidArguments() {
-        //GIVEN
+    public void validatorWithValidArgumentsReturnsTrue() {
         String filePath = "some path";
         String firstString = "one";
         String secondString = "two";
-        //WHEN
         String[] actual = {filePath, firstString, secondString};
         boolean isValid = validator.isValid(actual);
-        //THEN
         assertTrue(isValid);
     }
 
     @Test
-    public void validatorGetNull() {
-        //GIVEN
-        //WHEN
+    public void validatorWithNullReturnsFalse() {
         boolean isValid = validator.isValid(null);
-        //THEN
         assertFalse(isValid);
     }
 
     @Test
-    public void validatorGetEmptyArguments() {
-        //GIVEN
-        //WHEN
+    public void validatorWithEmptyArgumentsReturnsFalse() {
         String[] actual = {""};
         boolean isValid = validator.isValid(actual);
-        //THEN
         assertFalse(isValid);
     }
 
     @Test
-    public void validatorGetLessThanTwoArguments() {
-        //GIVEN
-        //WHEN
+    public void validatorWithLessThanTwoArgumentsReturnsFalse() {
         String[] actual = {"onlyOne"};
         boolean isValid = validator.isValid(actual);
-        //THEN
         assertFalse(isValid);
     }
 }
