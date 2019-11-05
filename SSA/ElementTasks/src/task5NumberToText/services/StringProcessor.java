@@ -5,14 +5,15 @@ import task5NumberToText.mappers.IMapper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Processor implements IProcessor {
+// FIXME: 11/5/2019 not using
+public class StringProcessor /*implements IProcessor*/ {
     private IMapper mapper;
 
-    public Processor(IMapper mapper) {
+    public StringProcessor(IMapper mapper) {
         this.mapper = mapper;
     }
 
-    @Override
+//    @Override
     public String process(String string) {
         if (string == null || string.isEmpty()) {
             return "Invalid input parameter.";
