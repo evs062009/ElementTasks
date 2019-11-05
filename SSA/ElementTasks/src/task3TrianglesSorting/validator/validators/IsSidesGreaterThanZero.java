@@ -2,6 +2,9 @@ package task3TrianglesSorting.validator.validators;
 
 import common.misc.Response;
 
+/*
+ * Checks if all sides are greater than zero.
+ */
 public class IsSidesGreaterThanZero implements ISidesValidator {
 
     @Override

@@ -2,6 +2,9 @@ package task3TrianglesSorting.validator.validators;
 
 import common.misc.Response;
 
+/*
+ * Checks if a length of each side is Less than a sum of two other.
+ */
 public class IsEachSideLessSumOtherTwo implements ISidesValidator {
 
     @Override
