@@ -19,14 +19,14 @@ import task3TrianglesSorting.validator.TriangleValidator;
 public class Task3Starter implements IStarter {
 
     public void startApp(){
-        /*Starts application*/
 
         IInput input = new ConsoleInput();
         IConverter converter = new ShapeDataConverter();
         IShapeValidator validator = new TriangleValidator();
         IService service = new SortingByArea();
         IOutput output = new ConsoleOutput();
-        Task3 app = new Task3(input, converter, validator, service, output);
+        App app = new App(input, converter, validator, service, output);
+
         app.execute();
     }
 }
