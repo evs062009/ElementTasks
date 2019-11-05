@@ -13,6 +13,7 @@ import utilities.IOUtilities;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class App {
     /*The main logic of application.*/
@@ -49,17 +50,16 @@ public class App {
                 "Input triangle parameters divided with '%s' (like name, side A, side B, side C): ",
                 getSeparator());
         String inputStr = input.input(message);
-        ShapeData data = converter.convert(inputStr, getSeparator());
-
-        if (data == null) {
+        Optional<ShapeData> dataOptional = converter.convert(inputStr, getSeparator());
+        if (dataOptional.isPresent()) {
+            response = validator.isValid(dataOptional.get());
+        } else {
             IOUtilities.println("Invalid input parameters.");
             return;
-        } else {
-            response = validator.isValid(data);
         }
 
         if (response.isValid()) {
-            shapes.add(new Triangle(data));
+            shapes.add(new Triangle(dataOptional.get()));
         } else {
             IOUtilities.println(response.getMessage());
         }

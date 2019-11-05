@@ -1,9 +1,9 @@
 package task3TrianglesSorting.services;
 
-import org.jetbrains.annotations.Nullable;
 import task3TrianglesSorting.misc.ShapeData;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public class ShapeDataConverter implements IConverter {
 
@@ -12,13 +12,11 @@ public class ShapeDataConverter implements IConverter {
      *
      * @param parameters parameters that are being converted to data for creating a shape.
      * @param separator  the delimiting symbol for splitting the parameters string to an array.
-     * @return the data for creating a shape, or {@code null} if parameters can not be converted
-     * to the {@link ShapeData}.
+     * @return {@link Optional} with {@link ShapeData}, or empty {@link Optional} if parameters
+     * can not be converted to the {@link ShapeData}.
      */
     @Override
-    @Nullable
-    public ShapeData convert(String parameters, String separator) {
-
+    public Optional<ShapeData> convert(String parameters, String separator) {
         if (parameters != null && !parameters.isEmpty()) {
             String[] paramArr = parameters.trim().split(separator);
 
@@ -29,11 +27,11 @@ public class ShapeDataConverter implements IConverter {
                     doubles = Arrays.stream(paramArr).skip(1).map(String::trim)
                             .mapToDouble(Double::parseDouble).toArray();
                 } catch (NumberFormatException e) {
-                    return null;
+                    return Optional.empty();
                 }
-                return new ShapeData(paramArr[0].trim(), doubles);
+                return Optional.of(new ShapeData(paramArr[0].trim(), doubles));
             }
         }
-        return null;
+        return Optional.empty();
     }
 }

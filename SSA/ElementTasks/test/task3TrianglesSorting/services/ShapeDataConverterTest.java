@@ -5,8 +5,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import task3TrianglesSorting.misc.ShapeData;
 
+import java.util.Optional;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 public class ShapeDataConverterTest {
 
@@ -28,42 +29,47 @@ public class ShapeDataConverterTest {
         String input = "name, 1.5, 2.5, 3.5";
         String name = "name";
         double[] doubles = {1.5, 2.5, 3.5};
-        ShapeData expected = new ShapeData(name, doubles);
+        Optional<ShapeData> expected = Optional.of(new ShapeData(name, doubles));
 
-        ShapeData actual = converter.convert(input, separator);
+        Optional<ShapeData> actual = converter.convert(input, separator);
 
         assertEquals(expected, actual);
     }
 
     @Test
-    public void convertWithNullInputReturnsNull() {
-        ShapeData actual = converter.convert(null, separator);
-        assertNull(actual);
+    public void convertWithNullInputReturnsEmptyOptional() {
+        Optional<ShapeData> expected = Optional.empty();
+        Optional<ShapeData> actual = converter.convert(null, separator);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void convertWithEmptyInputReturnsNull() {
-        ShapeData actual = converter.convert("", separator);
-        assertNull(actual);
+    public void convertWithEmptyInputReturnsEmptyOptional() {
+        Optional<ShapeData> expected = Optional.empty();
+        Optional<ShapeData> actual = converter.convert("", separator);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void convertWithLessThanTwoParametersReturnsNull() {
-        ShapeData actual = converter.convert("name ", separator);
-        assertNull(actual);
+    public void convertWithLessThanTwoParametersReturnsEmptyOptional() {
+        Optional<ShapeData> expected = Optional.empty();
+        Optional<ShapeData> actual = converter.convert("name ", separator);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void convertWithInputWithMissedSeparatorReturnsNull() {
+    public void convertWithInputWithMissedSeparatorReturnsEmptyOptional() {
+        Optional<ShapeData> expected = Optional.empty();
         String input = "name, 1.5, 2.5 3.5";
-        ShapeData actual = converter.convert(input, separator);
-        assertNull(actual);
+        Optional<ShapeData> actual = converter.convert(input, separator);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void convertCannotConvertStringToDoubleAndReturnsNull() {
+    public void convertCannotConvertStringToDoubleAndReturnsEmptyOptional() {
+        Optional<ShapeData> expected = Optional.empty();
         String input = "name, asg, 2.5 3.5";
-        ShapeData actual = converter.convert(input, separator);
-        assertNull(actual);
+        Optional<ShapeData> actual = converter.convert(input, separator);
+        assertEquals(expected, actual);
     }
 }
