@@ -5,7 +5,6 @@ import task5NumberToText.mappers.IMapper;
 import java.util.ArrayList;
 import java.util.List;
 
-// FIXME: 11/5/2019 not using
 public class StringProcessor /*implements IProcessor*/ {
     private IMapper mapper;
 
@@ -16,6 +15,11 @@ public class StringProcessor /*implements IProcessor*/ {
 //    @Override
     public String process(String string) {
         if (string == null || string.isEmpty()) {
+            return "Invalid input parameter.";
+        }
+        try {
+            Long.parseLong(string);
+        } catch (NumberFormatException e) {
             return "Invalid input parameter.";
         }
         if ("0".equals(string)) {
@@ -31,9 +35,6 @@ public class StringProcessor /*implements IProcessor*/ {
             string = string.substring(1);
         }
         List<char[]> charsBlocks = getBlocksList(string);
-        // FIXME: 11/5/2019
-        charsBlocks.forEach(System.out::println);
-        //
         return prefix + mapCharsBlocksToString(charsBlocks);
     }
 
@@ -56,7 +57,6 @@ public class StringProcessor /*implements IProcessor*/ {
 
         for (int i = charsBlocks.size() - 1; i >= 0 ; i--) {
             char[] chars = charsBlocks.get(i);
-
             for (int j = chars.length - 1, digit = chars.length; j >= 0; j--, digit--) {
                 if (j == 0) {
                     if (charToInt(chars, 1) != 1) {
@@ -66,9 +66,9 @@ public class StringProcessor /*implements IProcessor*/ {
                 builder.append(mapper.getNumberName(digit, charToInt(chars, j)));
             }
 
-//            if (i == 1) {
-//
-//            }
+            if (i != 0) {
+
+            }
 
         }
         // FIXME: 11/5/2019

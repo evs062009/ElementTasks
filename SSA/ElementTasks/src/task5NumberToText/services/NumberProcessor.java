@@ -1,5 +1,6 @@
 package task5NumberToText.services;
 
+import org.jetbrains.annotations.NotNull;
 import task5NumberToText.mappers.IMapper;
 import utilities.MathUtilities;
 
@@ -15,7 +16,6 @@ public class NumberProcessor implements IProcessor {
 
     @Override
     public String process(long number) {
-        String string;
         if (number == 0) {
             return mapper.getZero();
         }
@@ -25,23 +25,19 @@ public class NumberProcessor implements IProcessor {
     private String processNotZeroString(long number) {
         String prefix = (number < 0) ? (mapper.getMinus()) : ("");
         List<Integer> numberBlocks = new ArrayList<>();
-        long temp = 0;
         do {
             numberBlocks.add((int) (number % 1000));
             number /= 1000;
         } while (number > 0);
-        // FIXME: 11/5/2019
-//        numberBlocks.forEach(System.out::println);
-        //
         return prefix + mapCharsBlocksToString(numberBlocks);
     }
 
     private String mapCharsBlocksToString(List<Integer> integers) {
+        String result = "";
         StringBuilder builder = new StringBuilder();
 
         for (int i = integers.size() - 1; i >= 0; i--) {
             int number = integers.get(i);
-
             for (int j = 2, digit = j + 1; j >= 0; j--, digit--) {
                 int divider = MathUtilities.pow(10, j);
                 builder.append(mapper.getNumberName(digit, number / divider));
@@ -52,22 +48,34 @@ public class NumberProcessor implements IProcessor {
                 }
                 number %= divider;
             }
-//        // FIXME: 11/5/2019
-            System.out.println(number);
-//            if (i == 1) {
-//
-//            }
 
+            if (i != 0) {
+                processDigits(integers, builder, i);
+            }
+            result = fixThousands(builder.toString());
         }
-//        // FIXME: 11/5/2019
-        System.out.println(builder);
-
-        return null;
-        //
+        return result;
     }
 
-    private int charToInt(char[] chars, int index) {
-        final int shift = 48;
-        return Math.max(chars[index] - shift, 0);
+    private void processDigits(List<Integer> integers, StringBuilder builder, int i) {
+        int index;
+        int end = integers.get(i) % 100;
+        end = (end > 19) ? (end % 10) : (end);
+
+        if (end == 1) {
+            index = 0;
+        } else if (end > 1 && end < 5) {
+            index = 1;
+        } else {
+            index = 2;
+        }
+        builder.append(mapper.getBlockName(i - 1, index));
+    }
+
+    @NotNull
+    private String fixThousands(String string) {
+        string = string.replace("один тысяча ", "одна тысяча");
+        string = string.replace("два тысячи ", "две тысячи");
+        return string;
     }
 }
