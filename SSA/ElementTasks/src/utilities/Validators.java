@@ -3,6 +3,9 @@ package utilities;
 public class Validators {
     public static String message;
 
+    private Validators() {
+    }
+
     public static boolean isNotNull(Object o) {
         if (o != null) {
             clearMessage();

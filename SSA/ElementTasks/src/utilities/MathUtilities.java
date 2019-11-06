@@ -7,6 +7,9 @@ import java.util.List;
 
 public class MathUtilities {
 
+    private MathUtilities() {
+    }
+
     public static double round(double number, int places, RoundingMode mode)
             throws IllegalArgumentException {
         if (places < 0) {

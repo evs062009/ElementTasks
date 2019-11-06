@@ -6,6 +6,9 @@ public class IOUtilities {
 
     private static Scanner sc;
 
+    private IOUtilities() {
+    }
+
     public static double inputDouble(String message) throws NumberFormatException {
         sc = new Scanner(System.in);
         print(message);
