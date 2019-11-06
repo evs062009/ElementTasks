@@ -1,4 +1,4 @@
-package Task8FibonacciSequence;
+package task8FibonacciSequence;
 
 import org.jetbrains.annotations.Nullable;
 import utilities.IOUtilities;

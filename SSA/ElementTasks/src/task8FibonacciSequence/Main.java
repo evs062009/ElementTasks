@@ -1,4 +1,4 @@
-package Task8FibonacciSequence;
+package task8FibonacciSequence;
 
 public class Main {
     public static void main(String[] args) {
